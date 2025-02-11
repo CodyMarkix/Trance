@@ -25,7 +25,7 @@ void onReset() {
 	}
 }
 
-uint8_t gameLoop() {
+void gameLoop() {
 	while (1);
 
 	// TODO: Write game
