@@ -25,12 +25,13 @@ void onReset() {
 	}
 }
 
-void gameLoop() {
+uint8_t gameLoop() {
 	while (1);
+
+	// TODO: Write game
 }
 
-int main() {
+void main() {
 	onReset();
-	
-	while (1);
+    gameLoop();
 }
