@@ -4,6 +4,9 @@ source=./src/index.c
 
 build:
 	cl65 -Oirs -t nes -I ./include -o ./build/trance.nes $(source)
+
+	# This part is not to be uncommented as it does not work (I am probably doing something very wrong)
+	# ------------------------
 	# NES header
 	# ca65 -o build/header.o src/asm/header.s
 
