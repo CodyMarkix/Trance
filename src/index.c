@@ -1,35 +1,36 @@
-#include <unistd.h>
+#include <stdint.h>
 #include <nes.h>
 
-#define BASE_RAM 0x0800
+#include "ppu.h"
+#include "apu.h"
 
+void clearRAM() {
+	unsigned char *ptr = ((unsigned char*)0x0000);
+	unsigned char i = 0;
+	for (i = 0; i < 0x0800; i++) {
+		ptr[i] = 0; 
+	}
+}
 
-int onReset() {
-	__asm__(
-		"sei \n\t"
-		"cld \n\t"
-		"ldx #$40 \n\t"
-		"stx $4017 \n\t"
-		"ldx #$ff \n\t"
-		("txs")
-		("inx")
-	__asm__("stx $2000");
-	__asm__("stx $2001");
-	__asm__("stx $4010");
+void onReset() {
+	__asm__("sei");
+	__asm__("cld");
+	APU_FRAME_IRQ = 0x40;
+	PPU_CTRL = 0x00;
+	PPU_MASK = 0x00;
+	DMC_CHANNEL = 0x00;
 
-	return 0;
+	while (!(PPU_STATUS & 0x80)) {
+		clearRAM();
+	}
 }
 
 void gameLoop() {
-	waitvsync();
-	
+	while (1);
 }
 
-int main(void) {
-	int hasReset = onReset();
-	if (hasReset == 0) {
-		gameLoop();
-	}
-
-	return 0;
+int main() {
+	onReset();
+	
+	while (1);
 }

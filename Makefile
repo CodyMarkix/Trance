@@ -1,4 +1,4 @@
 .PHONY: build
 
 build:
-	cl65 -t nes -o ./build/nesnes.nes ./src/index.c
+	cl65 -t nes -I ./include -o ./build/nesnes.nes ./src/index.c
