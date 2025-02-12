@@ -22,13 +22,17 @@ void onReset() {
 
 	while (!(PPU_STATUS & 0x80)) {
 		clearRAM();
+		initializeAPU();
 	}
 }
 
 void gameLoop() {
-	while (1);
-
-	// TODO: Write game
+    uint8_t audioSetup[] = {
+        0x1F, 0xE0, 0xFF
+    };
+    uint8_t iter = 0;
+     
+    PULSE_ONE = 0x1F;
 }
 
 void main() {

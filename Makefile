@@ -1,4 +1,5 @@
-source=./src/index.c
+source=./src/*.c
+object=./src/index.o
 
 .PHONY: build
 

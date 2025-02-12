@@ -9,4 +9,6 @@
 #define TRIG_WAVE *((volatile uint16_t*)0x400B)
 #define NOISE *((volatile uint16_t*)0x400C)
 
+void initializeAPU();
+
 #endif // end APU_H_
